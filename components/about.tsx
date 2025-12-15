@@ -1,55 +1,74 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { User, Target, Zap, Rocket } from "lucide-react"
+import { Target, Zap, Rocket } from "lucide-react"
 
 export default function About() {
   return (
-    <section id="about" className="py-20 relative z-20">
+    <section id="about" className="min-h-screen py-20 flex flex-col justify-center relative z-20 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 relative">
-            <User className="inline-block mr-4 h-10 w-10 text-cyan-400" />
-            <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">SOBRE_MÍ</span>
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            Sobre Mí
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-green-400 mx-auto" />
+          <div className="w-32 h-1.5 bg-primary mx-auto rounded-full" />
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <Card className="bg-gray-900/50 border-2 border-cyan-500/30 backdrop-blur-sm relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-green-400" />
+          <div className="flex flex-col lg:flex-row gap-20 items-center">
+            {/* Text Content */}
+            <div className="flex-1 space-y-8">
+              <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+                Mi Perfil Professional
+              </h3>
+              <div className="text-muted-foreground text-xl md:text-2xl leading-relaxed space-y-8 font-light">
+                <p>
+                  Soy un ingeniero apasionado por la convergencia entre innovación tecnológica y estrategia de negocio.
+                  Me especializo en arquitecturas de software que no solo resuelven problemas actuales, sino que preparan a las empresas para el futuro.
+                </p>
+                <p>
+                  Con un enfoque centrado en la calidad y la escalabilidad, transformo ideas complejas en productos digitales robustos,
+                  priorizando siempre la excelencia técnica y la experiencia del usuario final.
+                </p>
+              </div>
+            </div>
 
-            <CardContent className="p-6 sm:p-8 relative z-10">
-              <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-                <div>
-                  <div className="text-cyan-400 font-mono text-sm mb-4">{"> cat about.txt"}</div>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    Apasionado por la tecnología y la innovación, me especializo en crear soluciones web full-stack que combinan calidad, escalabilidad y un diseño eficiente. Mi experiencia en proyectos empresariales me ha enseñado a aplicar buenas prácticas de ingeniería de software y a enfocarme en los detalles que marcan la diferencia.
-                  </p>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    Busco integrarme a equipos tecnológicos innovadores donde pueda aportar valor desde la ingeniería,
-                    la gestión y el desarrollo de sistemas.
-                  </p>
+            {/* Features Column */}
+            <div className="w-full lg:w-auto flex flex-col gap-6 lg:min-w-[400px]">
+              <div className="group flex items-start gap-6 p-6 rounded-2xl border border-transparent hover:border-border/50 hover:bg-muted/30 transition-all duration-300">
+                <div className="p-4 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Target className="h-8 w-8" />
                 </div>
-
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="p-6 rounded-lg bg-gradient-to-br from-cyan-600/10 to-cyan-800/10 border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
-                    <Target className="h-8 w-8 text-cyan-400 mb-3" />
-                    <h3 className="text-white font-bold mb-2">ENFOQUE</h3>
-                    <p className="text-gray-400 text-sm">Soluciones escalables y mantenibles</p>
-                  </div>
-                  <div className="p-6 rounded-lg bg-gradient-to-br from-green-600/10 to-green-800/10 border border-green-500/30 hover:border-green-400/50 transition-all duration-300">
-                    <Zap className="h-8 w-8 text-green-400 mb-3" />
-                    <h3 className="text-white font-bold mb-2">EXPERIENCIA</h3>
-                    <p className="text-gray-400 text-sm">Desarrollo empresarial y startups</p>
-                  </div>
-                  <div className="p-6 rounded-lg bg-gradient-to-br from-blue-600/10 to-blue-800/10 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300">
-                    <Rocket className="h-8 w-8 text-blue-400 mb-3" />
-                    <h3 className="text-white font-bold mb-2">INNOVACIÓN</h3>
-                    <p className="text-gray-400 text-sm">Tecnologías modernas y emergentes</p>
-                  </div>
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Visión Estratégica</h4>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    Desarrollo soluciones alineadas con los objetivos de crecimiento empresarial.
+                  </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+
+              <div className="group flex items-start gap-6 p-6 rounded-2xl border border-transparent hover:border-border/50 hover:bg-muted/30 transition-all duration-300">
+                <div className="p-4 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Zap className="h-8 w-8" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Alto Rendimiento</h4>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    Optimización obsesiva para garantizar velocidad y eficiencia.
+                  </p>
+                </div>
+              </div>
+
+              <div className="group flex items-start gap-6 p-6 rounded-2xl border border-transparent hover:border-border/50 hover:bg-muted/30 transition-all duration-300">
+                <div className="p-4 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Rocket className="h-8 w-8" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Innovación Continua</h4>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    Adopción temprana de tecnologías emergentes y mejores prácticas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
