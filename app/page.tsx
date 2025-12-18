@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
+import TechStack from "@/components/tech-stack"
 import Experience from "@/components/experience"
 import Education from "@/components/education"
 import Projects from "@/components/projects"
@@ -21,6 +22,7 @@ export default function Portfolio() {
       <Navbar />
       <div className="space-y-0 pb-20">
         <Hero />
+        <TechStack />
         <Experience />
         <Education />
         <Projects />
