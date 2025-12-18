@@ -1,112 +1,133 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+"use client"
+
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ShoppingCart, Zap, Server, ArrowUpRight } from "lucide-react"
+import { ExternalLink, Lock, ArrowUpRight } from "lucide-react"
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Pedidos Frideza",
-      description: "Plataforma B2B para gestión de pedidos mayoristas",
-      details: [
-        "Plataforma integral para automatización de pedidos mayoristas, reduciendo tiempos de procesamiento.",
-        "Experiencia personalizada para clientes con catálogos dinámicos y estados de cuenta en tiempo real.",
-        "Integración con sistemas ERP existentes para sincronización de stock y facturación.",
-      ],
-      tech: ["Next.js", "Node.js", "PostgreSQL", "Docker", "AWS"],
-      link: "#",
-      icon: <ShoppingCart className="h-6 w-6 text-primary" />,
-    },
-    {
-      title: "CodeGym",
-      description: "SaaS de gestión integral para gimnasios",
-      details: [
-        "Plataforma SaaS que optimiza operaciones diarias para múltiples gimnasios en la región.",
-        "Implementación de control de accesos, gestión de membresías y reportes financieros automáticos.",
-        "Arquitectura serverless para alta disponibilidad y bajo costo operativo.",
-      ],
-      tech: ["React", "Firebase", "TailwindCSS", "Cloud Functions"],
-      link: "https://teamcodegym.web.app",
-      icon: <Zap className="h-6 w-6 text-primary" />,
-    },
-    {
-      title: "GearCode",
-      description: "SaaS para centros de atención vehicular",
-      details: [
-        "Sistema de gestión especializado para talleres y centros de servicio automotriz.",
-        "Módulo de turnos, historial vehicular y notificaciones automáticas a clientes.",
-        "Desarrollado con enfoque en escalabilidad y seguridad de datos.",
-      ],
-      tech: ["NextJS", "NestJS", "PostgreSQL", "TypeORM"],
-      link: "https://gearcode.vercel.app",
-      icon: <Server className="h-6 w-6 text-primary" />,
-    },
-  ]
+    const projects = [
+        {
+            title: "Pedidos Frideza",
+            desc: "Plataforma para gestión de pedidos en frigorifico. Gestion de pedidos, productos, clientes, reportes y rutas logísticas.",
+            tech: ["Next.js", "Tailwind CSS", "TypeScript", "Firebase"],
+            img: "/frideza.png",
+            locked: true,
+            link: "#"
+        },
+        {
+            title: "CodeGym",
+            desc: "SaaS de gestión integral para gimnasios. Control integral del gimnasio, desde clientes, planes, pagos, reportes y estadísticas.",
+            tech: ["JavaScript", "CSS", "HTML", "Firebase", "Cloud Functions"],
+            img: "/codegym.png",
+            locked: false,
+            link: "https://teamcodegym.web.app"
+        },
+        {
+            title: "GearCode",
+            desc: "SaaS para centros de atención vehicular (talleres). Control integral de clientes, vehiculos, stock, ventas y reportes.",
+            tech: ["NextJS", "NestJS", "PostgreSQL", "TypeORM"],
+            img: "/gearcode.png", // Reuse generic SaaS image or placeholder if specific one missing
+            locked: false,
+            link: "https://gearcode.vercel.app"
+        },
+        {
+            title: "Chief Dashboard",
+            desc: "Plataforma de IA que permite a tomadores de decisiones chatear con sus propias bases de datos PostgreSQL mediante consultas en lenguaje natural y obtener metricas y graficos en tiempo real.",
+            tech: ["React", "Express", "TypeScript", "PostgreSQL", "Tailwind CSS", "Docker", "MCP"],
+            img: "/chief-dashboard.png",
+            locked: true,
+            link: "#"
+        }
+    ]
 
-  return (
-    <section id="projects" className="min-h-screen py-20 flex flex-col justify-center relative z-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Proyectos Destacados
-          </h2>
-          <div className="w-32 h-1.5 bg-primary mx-auto rounded-full" />
-          <p className="mt-8 text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Selección de desarrollos que demuestran capacidades técnicas y enfoque en soluciones de negocio de alto impacto.
-          </p>
-        </div>
+    return (
+        <section id="projects" className="container max-w-6xl mx-auto py-24 px-4 md:px-6 min-h-screen flex flex-col justify-center">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
-          {projects.map((project) => (
-            <Card
-              key={project.title}
-              className="flex flex-col h-full bg-card border-muted hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-2 group"
-            >
-              <CardHeader className="p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                    {project.icon}
-                  </div>
-                  {project.link !== "#" && (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
-                        <ArrowUpRight className="h-6 w-6" />
-                      </Button>
-                    </a>
-                  )}
-                </div>
-                <CardTitle className="text-2xl font-bold mb-3 text-foreground">{project.title}</CardTitle>
-                <CardDescription className="text-lg text-muted-foreground">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow px-8 pb-8">
-                <ul className="space-y-4 mb-6">
-                  {project.details.map((detail, i) => (
-                    <li key={i} className="text-sm md:text-base text-muted-foreground flex items-start gap-3">
-                      <div className="mt-2 min-w-[6px] h-1.5 rounded-full bg-primary/60" />
-                      <span className="leading-relaxed">{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardFooter className="flex flex-col items-start px-8 pb-8 pt-0">
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="outline"
-                      className="bg-transparent border-border/50 text-xs font-medium px-3 py-1"
+            <div className="flex flex-col space-y-4 mb-20 text-center animate-in fade-in slide-in-from-bottom-6 duration-700">
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Proyectos Destacados</h2>
+                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Una selección de soluciones tecnológicas desarrolladas para resolver problemas reales.
+                </p>
+            </div>
+
+            <div className="space-y-32">
+                {projects.map((project, i) => (
+                    <div
+                        key={i}
+                        className={`
+                            flex flex-col gap-10 items-center 
+                            ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}
+                            animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both
+                        `}
+                        style={{ animationDelay: `${i * 150}ms` }}
                     >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+                        {/* Image Side */}
+                        <div className="w-full md:w-1/2 relative group">
+                            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 shadow-2xl bg-muted/30">
+                                <Image
+                                    src={project.img}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
+
+                                {project.locked && (
+                                    <div className="absolute top-4 right-4">
+                                        <Badge variant="secondary" className="backdrop-blur-md bg-background/50 border-white/10 text-xs font-medium">
+                                            <Lock className="w-3 h-3 mr-1" /> Privado
+                                        </Badge>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Decorative Elements */}
+                            <div className={`
+                                absolute -z-10 w-3/4 h-3/4 bg-primary/5 rounded-full blur-3xl 
+                                ${i % 2 === 0 ? '-bottom-10 -left-10' : '-bottom-10 -right-10'}
+                            `} />
+                        </div>
+
+                        {/* Content Side */}
+                        <div className="w-full md:w-1/2 space-y-6">
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3">
+                                    <h3 className="text-3xl font-bold">{project.title}</h3>
+                                    <div className="h-px bg-border flex-1 ml-4" />
+                                </div>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    {project.desc}
+                                </p>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2">
+                                {project.tech.map((t) => (
+                                    <Badge key={t} variant="outline" className="text-xs py-1 px-3 border-primary/20 bg-primary/5 text-primary">
+                                        {t}
+                                    </Badge>
+                                ))}
+                            </div>
+
+                            <div className="pt-4">
+                                {project.locked ? (
+                                    <Button disabled variant="ghost" className="pl-0 text-muted-foreground cursor-not-allowed">
+                                        <Lock className="w-4 h-4 mr-2" /> Acceso Restringido
+                                    </Button>
+                                ) : (
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                        <Button variant="default" className="group">
+                                            Visitar Proyecto
+                                            <ArrowUpRight className="ml-2 w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                                        </Button>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    )
 }

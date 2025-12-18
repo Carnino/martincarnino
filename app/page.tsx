@@ -1,66 +1,32 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Header from "@/components/header"
+import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
-import About from "@/components/about"
 import Experience from "@/components/experience"
-import Skills from "@/components/skills"
-import Projects from "@/components/projects"
 import Education from "@/components/education"
+import Projects from "@/components/projects"
+import About from "@/components/about"
 import Contact from "@/components/contact"
-import Footer from "@/components/footer"
-import { ThemeProvider } from "@/components/theme-provider"
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("hero")
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-
-    const handleScroll = () => {
-      const sections = ["hero", "about", "experience", "skills", "projects", "education", "contact"]
-      const scrollPosition = window.scrollY + 100
-
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
-      <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-        <Header activeSection={activeSection} scrollToSection={scrollToSection} />
-        <main>
-          <Hero isVisible={isVisible} scrollToSection={scrollToSection} />
-          <About />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Education />
-          <Contact />
-        </main>
-        <Footer />
+    <main className="min-h-screen bg-background text-foreground antialiased font-sans relative">
+
+      {/* Subtle Background Pattern */}
+      <div className="fixed inset-0 -z-10 h-full w-full bg-background">
+        <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:bg-[radial-gradient(#ffffff15_1px,transparent_1px)]"></div>
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f615,transparent)]"></div>
       </div>
-    </ThemeProvider>
+
+      <Navbar />
+      <div className="space-y-0 pb-20">
+        <Hero />
+        <Experience />
+        <Education />
+        <Projects />
+        <About />
+        <Contact />
+      </div>
+    </main>
   )
 }
