@@ -45,7 +45,7 @@ export default function Projects() {
         },
         {
             title: "Pedidos Frideza",
-            desc: "Solución logística para distribuidora de congelados. Optimización de rutas, toma de pedidos móvil y control de stock en tiempo real.",
+            desc: "Gestion de pedidos, productos, clientes, reportes y rutas logísticas.",
             tech: ["Next.js", "Tailwind", "Firebase"],
             img: "/frideza.png",
             locked: true,
