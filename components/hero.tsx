@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, FileText } from "lucide-react"
@@ -9,6 +10,15 @@ export default function Hero() {
         <section className="container max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen text-center px-4 md:px-6">
 
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full border-4 border-background shadow-2xl overflow-hidden hover:scale-105 transition-transform duration-500 ring-1 ring-white/10">
+                    <Image
+                        src="/martin.jpg"
+                        alt="Martín Carnino"
+                        fill
+                        className="object-cover object-top scale-125"
+                        priority
+                    />
+                </div>
                 <Badge variant="secondary" className="px-3 py-1 text-sm rounded-full font-normal mx-auto bg-muted hover:bg-muted text-muted-foreground border-border">
                     <span className="flex items-center gap-1.5">
                         <span className="relative flex h-2 w-2">
