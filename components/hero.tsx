@@ -33,9 +33,9 @@ export default function Hero() {
                     </span>
                 </Badge>
 
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white sm:leading-tight">
-                    Martín Carnino
-                    <span className="block text-xl md:text-3xl text-slate-400 font-medium mt-2 tracking-normal">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white sm:leading-tight animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                    <span className="text-gradient">Martín Carnino</span>
+                    <span className="block text-xl md:text-3xl text-slate-400 font-medium mt-2 tracking-normal opacity-80">
                         Ingeniero en Sistemas / Consultor IT & Desarrollador
                     </span>
                 </h1>

@@ -57,11 +57,13 @@ export default function Projects() {
         <section id="projects" className="container max-w-7xl mx-auto py-24 px-4 md:px-6">
 
             <div className="flex flex-col space-y-4 mb-16 text-center animate-in fade-in slide-in-from-bottom-6 duration-700">
-                <Badge variant="outline" className="w-fit mx-auto mb-2 text-primary border-primary/20 bg-primary/5 px-4 py-1 rounded-full uppercase tracking-wider text-[10px] font-bold">
+                <Badge variant="outline" className="w-fit mx-auto mb-2 text-primary border-primary/20 bg-primary/5 px-4 py-1 rounded-full uppercase tracking-[0.2em] text-[10px] font-black">
                     Portafolio
                 </Badge>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Proyectos Destacados</h2>
-                <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                    <span className="text-gradient">Proyectos Destacados</span>
+                </h2>
+                <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium opacity-80">
                     Transformando ideas complejas en soluciones digitales efectivas.
                 </p>
             </div>
@@ -69,7 +71,7 @@ export default function Projects() {
             <div className="space-y-12">
 
                 {/* 1. FEATURED PROJECT (Horizontal Layout) */}
-                <div className="group rounded-3xl border border-slate-700/50 bg-slate-900/40 backdrop-blur-sm overflow-hidden hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] transition-all duration-500 hover:border-primary/30">
+                <div className="group rounded-3xl border border-slate-700/50 bg-slate-900/40 backdrop-blur-sm overflow-hidden hover:shadow-[0_0_40px_rgba(0,0,0,0.4)] transition-all duration-700 hover:border-primary/40">
                     <div className="grid md:grid-cols-2 gap-0">
                         {/* Image Section */}
                         <div className="relative h-64 md:h-auto overflow-hidden bg-slate-800">
@@ -77,45 +79,45 @@ export default function Projects() {
                                 src={featuredProject.img}
                                 alt={featuredProject.title}
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                                className="object-cover transition-all duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-75 group-hover:contrast-100 opacity-60 group-hover:opacity-100"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 to-transparent" />
                         </div>
 
                         {/* Content Section */}
                         <div className="p-8 md:p-12 flex flex-col justify-center space-y-6">
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <Badge variant="default" className="bg-primary/90 hover:bg-primary px-3 py-1">Proyecto Estrella</Badge>
+                                    <Badge variant="default" className="bg-primary/90 hover:bg-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Proyecto Estrella</Badge>
                                     {featuredProject.locked && (
-                                        <Badge variant="outline" className="text-slate-400 border-slate-700/50 gap-1 bg-slate-800/30">
+                                        <Badge variant="outline" className="text-slate-400 border-slate-700/50 gap-1 bg-slate-800/30 rounded-full text-[10px]">
                                             <Lock className="w-3 h-3" /> Privado
                                         </Badge>
                                     )}
                                 </div>
-                                <h3 className="text-3xl font-bold text-white tracking-tight">{featuredProject.title}</h3>
-                                <p className="text-slate-400 text-lg leading-relaxed">
+                                <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tighter">{featuredProject.title}</h3>
+                                <p className="text-slate-400 text-lg leading-relaxed font-medium opacity-90">
                                     {featuredProject.desc}
                                 </p>
                             </div>
 
                             <div className="flex flex-wrap gap-2">
                                 {featuredProject.tech.map((t) => (
-                                    <Badge key={t} variant="secondary" className="font-medium bg-slate-800/50 text-slate-300 border-slate-700/50">
+                                    <span key={t} className="text-xs font-semibold text-primary/70 bg-primary/5 border border-primary/10 px-2 py-1 rounded-md uppercase tracking-wide">
                                         {t}
-                                    </Badge>
+                                    </span>
                                 ))}
                             </div>
 
                             <div className="pt-4">
-                                <Button disabled={featuredProject.locked} variant={featuredProject.locked ? "outline" : "default"} className="gap-2 h-11 px-6 rounded-xl">
+                                <Button disabled={featuredProject.locked} variant={featuredProject.locked ? "outline" : "default"} className="gap-2 h-11 px-8 rounded-2xl font-bold uppercase text-[10px] tracking-widest transition-all duration-500">
                                     {featuredProject.locked ? (
                                         <>
                                             <Lock className="w-4 h-4" /> Acceso Restringido
                                         </>
                                     ) : (
                                         <>
-                                            Ver Estudio de Caso <ArrowUpRight className="w-4 h-4" />
+                                            Ver Proyecto <ArrowUpRight className="w-4 h-4" />
                                         </>
                                     )}
                                 </Button>
@@ -127,64 +129,62 @@ export default function Projects() {
                 {/* 2. STANDARD PROJECTS GRID (3 Columns) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {projects.map((project, i) => (
-                        <Card key={i} className="group overflow-hidden border-slate-700/50 bg-slate-900/40 backdrop-blur-sm hover:border-primary/40 transition-all duration-300 hover:shadow-2xl flex flex-col rounded-2xl">
+                        <Card key={i} className="group overflow-hidden border-slate-700/50 bg-slate-900/40 backdrop-blur-sm hover:border-primary/40 transition-all duration-300 hover:shadow-2xl flex flex-col rounded-[2rem]">
                             {/* Image Header */}
                             <div className="relative aspect-video overflow-hidden bg-slate-800 border-b border-slate-700/50">
                                 <Image
                                     src={project.img}
                                     alt={project.title}
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-70 group-hover:opacity-100"
+                                    className="object-cover transition-all duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0 contrast-50 group-hover:contrast-100 opacity-40 group-hover:opacity-90"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60" />
                                 {project.locked && (
-                                    <div className="absolute top-3 right-3 z-10">
-                                        <div className="bg-slate-950/80 backdrop-blur-sm p-1.5 rounded-full border border-slate-700/50 shadow-sm">
-                                            <Lock className="w-3 h-3 text-slate-400" />
+                                    <div className="absolute top-4 right-4 z-10">
+                                        <div className="bg-slate-950/80 backdrop-blur-sm p-2 rounded-full border border-slate-700/50 shadow-sm">
+                                            <Lock className="w-4 h-4 text-slate-400" />
                                         </div>
                                     </div>
                                 )}
                             </div>
 
-                            {/* Content Footer */}
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-xl flex items-center justify-between text-white tracking-tight">
+                            <CardHeader className="pb-2 p-8">
+                                <CardTitle className="text-2xl font-bold text-white tracking-tight">
                                     {project.title}
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent className="pb-4 flex-grow">
-                                <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">
+                            <CardContent className="pb-4 px-8 flex-grow">
+                                <p className="text-slate-400 text-sm leading-relaxed font-medium opacity-80">
                                     {project.desc}
                                 </p>
                             </CardContent>
 
-                            <CardFooter className="flex flex-col items-start gap-4 pt-0">
-                                <div className="flex flex-wrap gap-1.5 w-full">
+                            <CardFooter className="flex flex-col items-start gap-6 p-8 pt-0">
+                                <div className="flex flex-wrap gap-2 w-full">
                                     {project.tech.map((t) => (
-                                        <Badge key={t} variant="outline" className="text-[10px] bg-slate-800/30 font-medium text-slate-400 border-slate-700/30 uppercase tracking-tighter">
+                                        <Badge key={t} variant="outline" className="text-[9px] bg-slate-800/30 font-bold text-slate-400 border-slate-700/30 uppercase tracking-tighter rounded-md px-2 py-0.5">
                                             {t}
                                         </Badge>
                                     ))}
                                 </div>
 
-                                <div className="w-full pt-2">
+                                <div className="w-full">
                                     {!project.locked ? (
                                         <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                            <Button variant="outline" className="w-full rounded-xl border-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300">
+                                            <Button variant="outline" className="w-full rounded-2xl border-slate-700 group-hover:bg-primary group-hover:text-white transition-all duration-500 font-bold uppercase text-[10px] tracking-widest h-11">
                                                 Visitar <ExternalLink className="w-3 h-3 ml-2" />
                                             </Button>
                                         </a>
                                     ) : (
-                                        <Button variant="ghost" disabled className="w-full text-xs text-slate-500 justify-start px-0 hover:bg-transparent">
-                                            <Lock className="w-3 h-3 mr-2" /> Código Privado
-                                        </Button>
+                                        <div className="flex items-center gap-2 text-slate-500 font-bold uppercase text-[10px] tracking-widest px-1">
+                                            <Lock className="w-3 h-3" /> Código Privado
+                                        </div>
                                     )}
                                 </div>
                             </CardFooter>
                         </Card>
                     ))}
                 </div>
-
             </div>
         </section>
     )
