@@ -1,42 +1,44 @@
 "use client"
 
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-    CardDescription
-} from "@/components/ui/card"
-
-import { Badge } from "@/components/ui/badge"
-
+import { MapPin } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/context"
 
 export default function About() {
+    const { t } = useLanguage()
+    
     return (
-        <section id="about" className="container max-w-5xl mx-auto py-24 px-4 md:px-6 min-h-screen flex flex-col justify-center">
+        <section id="about" className="container max-w-6xl mx-auto py-32 px-4 md:px-6 min-h-[70vh] flex flex-col justify-center border-t border-white/10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
-            <div className="flex flex-col space-y-4 mb-12 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Sobre Mí</h2>
-                <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
-            </div>
+                {/* Left Column: Quote/Manifesto */}
+                <div className="lg:col-span-6 flex flex-col gap-6">
+                    <h2 
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight"
+                        dangerouslySetInnerHTML={{ __html: t('about_quote') }}
+                    />
+                </div>
 
-            <div className="w-full flex justify-center">
-                <Card className="border-border/60 bg-card/50 backdrop-blur-sm animate-in fade-in zoom-in-95 duration-500 max-w-4xl w-full">
-                    <CardHeader>
-                        <CardTitle className="text-2xl">Perfil Profesional</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                {/* Right Column: Details & Philosophy */}
+                <div className="lg:col-span-6 flex flex-col gap-8 md:pl-12 lg:border-l border-white/10">
+                    <div className="space-y-6 text-lg text-slate-400 font-normal leading-relaxed">
                         <p>
-                            Ingeniero apasionado por diseñar la convergencia perfecta entre la innovación tecnológica y la estrategia de negocio. Mi enfoque no se limita a escribir código, sino a construir arquitecturas de software robustas y escalables que actúan como el motor de crecimiento para empresas preparadas para el futuro.
+                            {t('about_desc_1')}
                         </p>
                         <p>
-                            Con una mentalidad orientada a la excelencia técnica y la experiencia del usuario (UX), me especializo en transformar problemas complejos en soluciones digitales eficientes. Actualmente, estoy potenciando mi expertise en el ecosistema IT mediante la virtualización avanzada y soluciones críticas de VMware, con el objetivo de optimizar la infraestructura empresarial, reducir la deuda técnica y maximizar la resiliencia operativa en entornos de alta demanda.
+                            {t('about_desc_2')}
                         </p>
-                        <div className="flex items-center gap-2 pt-2">
-                            <Badge variant="secondary" className="text-sm px-3 py-1">📍 General Deheza, Córdoba</Badge>
+                    </div>
+
+                    <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-8">
+                        <div className="flex flex-col gap-2">
+                            <span className="text-sm font-bold tracking-widest text-white uppercase opacity-60">{t('about_location_title')}</span>
+                            <div className="flex items-center gap-2 text-slate-300 font-medium">
+                                <span>{t('about_location_city')}</span>
+                            </div>
                         </div>
-                    </CardContent>
-                </Card>
+                    </div>
+                </div>
+
             </div>
         </section>
     )
