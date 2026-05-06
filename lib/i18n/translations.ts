@@ -47,19 +47,19 @@ export const translations = {
         proj_desc: "Una selección de productos digitales construidos con foco en rendimiento, escalabilidad y experiencia de usuario.",
         proj_btn_view: "Ver Proyecto",
         proj_btn_locked: "Acceso Restringido",
-        
+
         proj_1_title: "GPSProp",
         proj_1_desc: "Plataforma integral inmobiliaria para Río Cuarto. Permite a las inmobiliarias publicar propiedades, a profesionales promocionar sus servicios y a usuarios contactarlos de forma directa. Un ecosistema completo para el rubro.",
-        
+
         proj_2_title: "Chief Dashboard",
         proj_2_desc: "Plataforma de Inteligencia Artificial que revoluciona la toma de decisiones. Permite a los directivos interactuar con sus bases de datos PostgreSQL mediante lenguaje natural. Utiliza una arquitectura avanzada basada en agentes (MCP) para generar métricas, gráficos y análisis en tiempo real.",
-        
+
         proj_3_title: "GearCode",
         proj_3_desc: "SaaS integral para la gestión de talleres mecánicos. Control total de vehículos, clientes, stock, órdenes de trabajo y facturación.",
-        
+
         proj_4_title: "CodeGym",
         proj_4_desc: "Software de gestión para centros de fitness. Administración de socios, membresías, control de accesos y reportes financieros.",
-        
+
         proj_5_title: "Pedidos Frideza",
         proj_5_desc: "Gestion de pedidos, productos, clientes, reportes y rutas logísticas.",
 
@@ -132,16 +132,16 @@ export const translations = {
 
         proj_1_title: "GPSProp",
         proj_1_desc: "Comprehensive real estate platform for Río Cuarto. It allows real estate agencies to publish properties, professionals to promote their services, and users to contact them directly. A complete ecosystem for the industry.",
-        
+
         proj_2_title: "Chief Dashboard",
         proj_2_desc: "Artificial Intelligence platform that revolutionizes decision making. It allows executives to interact with their PostgreSQL databases using natural language. It uses an advanced agent-based architecture (MCP) to generate metrics, charts, and analysis in real time.",
-        
+
         proj_3_title: "GearCode",
         proj_3_desc: "Comprehensive SaaS for the management of mechanical workshops. Total control of vehicles, clients, stock, work orders, and billing.",
-        
+
         proj_4_title: "CodeGym",
         proj_4_desc: "Management software for fitness centers. Member administration, memberships, access control, and financial reports.",
-        
+
         proj_5_title: "Pedidos Frideza",
         proj_5_desc: "Order management, products, clients, reports, and logistics routes.",
 
@@ -150,7 +150,7 @@ export const translations = {
         about_desc_1: "My main strength lies in my ability to build relationships with my clients. I don't just develop code; I listen, analyze, and convert business objectives into precise technical requirements.",
         about_desc_2: "I believe the success of a digital product depends on maintaining constant, transparent, and empathetic communication throughout the project's lifecycle. My goal is to provide differential attention that brings peace of mind and security, complemented by high technical rigor in implementation.",
         about_location_title: "Current Location",
-        about_location_city: "📍 General Deheza, Córdoba",
+        about_location_city: "📍 Rio Cuarto, Córdoba",
 
         // Contact
         contact_available: "Available for new challenges",

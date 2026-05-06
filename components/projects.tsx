@@ -4,7 +4,8 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Lock, ArrowUpRight, Github, ExternalLink } from "lucide-react"
-import { useLanguage, TranslationKey } from "@/lib/i18n/context"
+import { useLanguage } from "@/lib/i18n/context"
+import { TranslationKey } from "@/lib/i18n/translations"
 
 export default function Projects() {
     const { t } = useLanguage()
