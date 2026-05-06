@@ -71,7 +71,7 @@ export default function Contact() {
                 </div>
 
                 <div className="text-sm text-slate-500 font-medium flex items-center gap-4">
-                    <a href="https://github.com/martincarnino1" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    <a href="https://github.com/Carnino" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                         <Github className="w-5 h-5" />
                     </a>
                     <span>{t('contact_copyright', { year: new Date().getFullYear().toString() })}</span>
