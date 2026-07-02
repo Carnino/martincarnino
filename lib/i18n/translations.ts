@@ -27,6 +27,13 @@ export const translations = {
         exp_resp_2: "Integración de Modelos de Inteligencia Artificial (LLMs).",
         exp_resp_3: "Automatización y Optimización de flujos de trabajo.",
         exp_resp_4: "Interacción directa y consultoría técnica a clientes.",
+        exp_codegym_date: "2023 - Presente",
+        exp_codegym_role: "Co-fundador",
+        exp_codegym_desc: "Co-fundé CodeGym, una plataforma para la gestión integral de gimnasios y centros de fitness. Lidero el producto de punta a punta —arquitectura y desarrollo full-stack— y además me encargo de la venta y postventa, acompañando a cada gimnasio desde la demo hasta el soporte continuo.",
+        exp_codegym_resp_1: "Diseño y desarrollo full-stack del producto con Next.js.",
+        exp_codegym_resp_2: "Gestión de socios, cobros, vencimientos y control de accesos.",
+        exp_codegym_resp_3: "Venta y postventa: demos, onboarding y soporte a gimnasios.",
+        exp_codegym_resp_4: "Definición de producto y relación directa con gimnasios clientes.",
 
         // Education
         edu_title: "Educación",
@@ -38,8 +45,8 @@ export const translations = {
         edu_tag_2: "Ingeniería de Software",
         edu_tag_3: "Escalabilidad",
         edu_final_proj_title: "Proyecto Final",
-        edu_final_proj_desc: "Actualmente a la espera de la defensa de mi Proyecto Final de Grado. Enfocado en mi consolidación profesional, aportando mi experiencia ingenieril al desarrollo de soluciones de alto valor.",
-        edu_final_proj_status: "En Progreso",
+        edu_final_proj_desc: "Proyecto Final de Grado aprobado, obteniendo el título de Ingeniero en Sistemas de Información (Julio 2026). Enfocado en mi consolidación profesional, aportando mi experiencia ingenieril al desarrollo de soluciones de alto valor.",
+        edu_final_proj_status: "Graduado",
         edu_gpa_title: "Promedio General",
 
         // Projects
@@ -68,7 +75,7 @@ export const translations = {
         about_desc_1: "Mi principal fortaleza radica en la habilidad de relacionarme con mis clientes. No solo desarrollo código; escucho, analizo y convierto objetivos de negocio en requisitos técnicos precisos.",
         about_desc_2: "Creo que el éxito de un producto digital depende de mantener una comunicación constante, transparente y empática durante todo el ciclo de vida del proyecto. Mi objetivo es brindar una atención diferencial que aporte tranquilidad y seguridad, complementada con un alto rigor técnico en la implementación.",
         about_location_title: "Ubicación Actual",
-        about_location_city: "📍 General Deheza, Córdoba",
+        about_location_city: "📍 Río Cuarto, Córdoba",
 
         // Contact
         contact_available: "Disponible para nuevos desafíos",
@@ -109,6 +116,13 @@ export const translations = {
         exp_resp_2: "Artificial Intelligence Models Integration (LLMs).",
         exp_resp_3: "Workflow Automation and Optimization.",
         exp_resp_4: "Direct interaction and technical consulting to clients.",
+        exp_codegym_date: "2023 - Present",
+        exp_codegym_role: "Co-founder",
+        exp_codegym_desc: "I co-founded CodeGym, a platform for the complete management of gyms and fitness centers. I lead the product end-to-end —architecture and full-stack development— and I also handle sales and after-sales, guiding each gym from the demo through ongoing support.",
+        exp_codegym_resp_1: "Full-stack product design and development with Next.js.",
+        exp_codegym_resp_2: "Member management, billing, renewals, and access control.",
+        exp_codegym_resp_3: "Sales and after-sales: demos, onboarding, and gym support.",
+        exp_codegym_resp_4: "Product definition and direct relationship with gym clients.",
 
         // Education
         edu_title: "Education",
@@ -120,8 +134,8 @@ export const translations = {
         edu_tag_2: "Software Engineering",
         edu_tag_3: "Scalability",
         edu_final_proj_title: "Final Project",
-        edu_final_proj_desc: "Currently awaiting the defense of my Final Degree Project. Focused on my professional consolidation, contributing my engineering experience to the development of high-value solutions.",
-        edu_final_proj_status: "In Progress",
+        edu_final_proj_desc: "Final Degree Project approved, earning the title of Information Systems Engineer (July 2026). Focused on my professional consolidation, contributing my engineering experience to the development of high-value solutions.",
+        edu_final_proj_status: "Graduated",
         edu_gpa_title: "Overall GPA",
 
         // Projects

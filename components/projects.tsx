@@ -41,10 +41,10 @@ export default function Projects() {
         {
             title: t('proj_4_title' as TranslationKey),
             desc: t('proj_4_desc' as TranslationKey),
-            tech: ["JavaScript", "Firebase", "HTML/CSS"],
-            img: "/codegym.png",
+            tech: ["Next.js", "Tailwind CSS", "Firebase"],
+            img: "/codegymv2.png",
             locked: false,
-            link: "https://teamcodegym.web.app",
+            link: "https://www.codegym.fit",
         },
         {
             title: t('proj_5_title' as TranslationKey),
