@@ -4,36 +4,49 @@
 
 @layer base {
   :root {
-    /* Minimalist Monochromatic Theme */
-    --background: 0 0% 5%; /* Deep almost-black */
-    --foreground: 0 0% 98%; /* Off-white */
+    /* Neutral, cool "paper and ink" base so each project's brand color carries the page */
+    --background: 216 14% 95%;       /* paper  #EFF1F4 */
+    --foreground: 220 12% 8%;        /* ink    #121417 */
+    --card: 0 0% 100%;               /* surface */
+    --card-foreground: 220 12% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 12% 8%;
+    --primary: 220 12% 8%;
+    --primary-foreground: 216 14% 97%;
+    --secondary: 216 12% 90%;
+    --secondary-foreground: 220 12% 8%;
+    --muted: 216 12% 90%;
+    --muted-foreground: 220 8% 38%;  /* #5A606B, 5.9:1 on paper */
+    --accent: 216 12% 90%;
+    --accent-foreground: 220 12% 8%;
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 12% 84%;
+    --input: 216 12% 84%;
+    --ring: 233 78% 55%;
+    --live: 145 63% 36%;
+    --radius: 0.75rem;
+  }
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%; /* White as primary */
-    --primary-foreground: 0 0% 9%; /* Dark text on primary button */
-
-    --secondary: 0 0% 12%; /* Dark gray */
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%; /* Neutral gray for text */
-
-    --accent: 0 0% 12%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 15%; /* Subtle borders */
-    --input: 0 0% 15%;
-    --ring: 0 0% 98%; /* White ring */
-
-    --radius: 0.5rem; /* Less bubbly, more industrial */
+  .dark {
+    --background: 220 14% 7%;
+    --foreground: 216 16% 93%;
+    --card: 220 13% 10%;
+    --card-foreground: 216 16% 93%;
+    --popover: 220 13% 10%;
+    --popover-foreground: 216 16% 93%;
+    --primary: 216 16% 93%;
+    --primary-foreground: 220 14% 7%;
+    --secondary: 220 11% 15%;
+    --secondary-foreground: 216 16% 93%;
+    --muted: 220 11% 15%;
+    --muted-foreground: 218 9% 64%;
+    --accent: 220 11% 15%;
+    --accent-foreground: 216 16% 93%;
+    --border: 220 10% 19%;
+    --input: 220 10% 19%;
+    --ring: 233 90% 72%;
+    --live: 145 55% 50%;
   }
 }
 
@@ -42,35 +55,64 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground antialiased relative overflow-x-hidden;
+  html {
+    -webkit-text-size-adjust: 100%;
   }
-  
+
+  /* No global scroll-behavior: smooth. It made Chrome animate the initial jump to a #hash
+     and reload scroll restoration, which ScrollTrigger's refresh then cut short. Smooth
+     scrolling is applied only to in-page link clicks (components/smooth-anchors.tsx). */
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
   ::selection {
-    @apply bg-primary/20 text-foreground;
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 }
 
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60;
+/* Hero headline: each word rises out of its own mask. Pure CSS, so it starts on first
+   paint (no waiting for hydration, no flash) and is skipped entirely with reduced motion. */
+@layer components {
+  .word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    /* room for descenders (g, y, p) inside the mask */
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
   }
 
-  .glass-card {
-    @apply bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-300;
+  .word-mask > span {
+    display: inline-block;
   }
 
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
+  @media (prefers-reduced-motion: no-preference) {
+    .word-mask > span {
+      animation: word-rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+      animation-delay: calc(var(--i, 0) * 55ms + 80ms);
     }
+  }
 
-    100% {
-      transform: translateX(-50%);
+  @keyframes word-rise {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: translateY(0);
     }
   }
 }

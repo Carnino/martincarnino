@@ -1,83 +1,109 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { ArrowUpRight, Github, Linkedin, Mail, MessageSquare } from "lucide-react"
+import { useState } from "react"
+import { ArrowUp, Check, Copy, Github, Linkedin, Mail } from "lucide-react"
+import { toast } from "sonner"
 import { useLanguage } from "@/lib/i18n/context"
+import { site } from "@/lib/projects"
+import { NeedForm } from "@/components/need-form"
 
 export default function Contact() {
     const { t } = useLanguage()
-    
+    const [copied, setCopied] = useState(false)
+
+    const copyEmail = async () => {
+        try {
+            await navigator.clipboard.writeText(site.email)
+            setCopied(true)
+            toast.success(t.contact.copied)
+            setTimeout(() => setCopied(false), 2000)
+        } catch {
+            toast(`${t.contact.copyFailed} ${site.email}`)
+        }
+    }
+
     return (
-        <section id="contact" className="w-full bg-white/[0.02] border-t border-white/10 mt-32 py-32 px-4 md:px-6 flex flex-col items-center text-center">
+        <>
+            <section id="contact" aria-labelledby="contact-title" className="bg-foreground text-background">
+                <div className="mx-auto max-w-6xl px-4 md:px-6 py-20 md:py-28">
+                    <h2 data-reveal id="contact-title" className="max-w-[16ch] text-5xl md:text-7xl font-semibold tracking-[-0.045em] leading-[1.02] text-balance">
+                        {t.contact.title}
+                    </h2>
+                    <p data-reveal className="mt-6 max-w-[52ch] text-lg leading-relaxed text-background/70">{t.contact.body}</p>
 
-            {/* Massive Call to Action */}
-            <div className="flex flex-col items-center max-w-4xl w-full">
-                <p className="text-sm font-bold tracking-[0.3em] uppercase text-emerald-500 mb-8">
-                    {t('contact_available')}
-                </p>
-                
-                <h2 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-12 hover:scale-105 transition-transform duration-500 cursor-default">
-                    {t('contact_title')}
-                </h2>
+                    <div data-reveal className="mt-10 max-w-3xl">
+                        <NeedForm tone="inverted" />
+                    </div>
 
-                <p className="text-lg md:text-xl text-slate-400 font-medium max-w-2xl mb-16 leading-relaxed">
-                    {t('contact_desc')}
-                </p>
-
-                {/* Main Contact Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-24">
-                    <a href="https://wa.me/5493584110368" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                        <Button size="lg" className="w-full sm:w-auto h-14 px-10 bg-white text-black hover:bg-slate-200 font-bold text-sm rounded-full transition-colors">
-                            <MessageSquare className="mr-2 h-5 w-5" />
-                            {t('contact_btn_wpp')}
-                        </Button>
-                    </a>
-                    
-                    <a href="mailto:carninomartin@gmail.com" className="w-full sm:w-auto">
-                        <Button variant="outline" size="lg" className="w-full sm:w-auto h-14 px-10 border-white/20 text-white hover:bg-white/[0.05] font-bold text-sm rounded-full transition-colors">
-                            <Mail className="mr-2 h-5 w-5" />
-                            {t('contact_btn_email')}
-                        </Button>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/martin-carnino/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                        <Button variant="outline" size="lg" className="w-full sm:w-auto h-14 px-10 border-white/20 text-white hover:bg-white/[0.05] font-bold text-sm rounded-full transition-colors">
-                            <Linkedin className="mr-2 h-5 w-5" />
-                            {t('contact_btn_linkedin')}
-                        </Button>
-                    </a>
-                </div>
-            </div>
-
-            {/* Subtle Wayclo Integration Footer */}
-            <div className="w-full max-w-6xl border-t border-white/10 pt-12 flex flex-col md:flex-row items-center justify-between gap-8 text-left">
-                <div className="flex items-center gap-6">
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase mb-2">{t('contact_powered')}</span>
-                        <div className="relative h-6 w-24 opacity-80 hover:opacity-100 transition-opacity">
-                            <a href="https://wayclo.com" target="_blank" rel="noopener noreferrer">
-                                <img
-                                    src="/logo_blanco.png"
-                                    alt="Wayclo Logo"
-                                    className="object-contain object-left w-full h-full"
-                                />
+                    <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                        <div className="inline-flex h-14 items-stretch overflow-hidden rounded-full border border-background/25">
+                            <a
+                                href={`mailto:${site.email}`}
+                                className="inline-flex min-w-0 flex-1 items-center gap-2 px-6 font-medium transition-colors hover:bg-background/10"
+                            >
+                                <Mail className="h-5 w-5 shrink-0" />
+                                <span className="truncate">{site.email}</span>
                             </a>
+                            <button
+                                type="button"
+                                onClick={copyEmail}
+                                aria-label={t.contact.copy}
+                                title={t.contact.copy}
+                                className="inline-flex w-14 shrink-0 items-center justify-center border-l border-background/25 transition-colors hover:bg-background/10"
+                            >
+                                {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
+                            </button>
                         </div>
                     </div>
-                    <div className="hidden md:block h-10 w-[1px] bg-white/10 mx-2" />
-                    <p className="text-sm text-slate-400 max-w-sm hidden md:block">
-                        {t('contact_powered_desc')}
+
+                    <p className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-background/70">
+                        <span>{t.contact.elsewhere}</span>
+                        <a
+                            href={site.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-background underline decoration-background/30 underline-offset-4 hover:decoration-background"
+                        >
+                            <Linkedin className="h-4 w-4" />
+                            LinkedIn
+                        </a>
+                        <a
+                            href={site.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-background underline decoration-background/30 underline-offset-4 hover:decoration-background"
+                        >
+                            <Github className="h-4 w-4" />
+                            GitHub
+                        </a>
                     </p>
                 </div>
+            </section>
 
-                <div className="text-sm text-slate-500 font-medium flex items-center gap-4">
-                    <a href="https://github.com/Carnino" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                        <Github className="w-5 h-5" />
+            <footer className="bg-foreground text-background/60 border-t border-background/15">
+                <div className="mx-auto flex max-w-6xl flex-col sm:flex-row items-start sm:items-center justify-between gap-6 px-4 md:px-6 py-8 text-sm">
+                    <a
+                        href={site.wayclo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 transition-colors hover:text-background"
+                    >
+                        {t.contact.partOf}
+                        {/* Footer is always dark (inverted in dark mode), so pick the logo that contrasts. */}
+                        <img src="/wayclo-white.png" alt="Wayclo" width={120} height={32} loading="lazy" decoding="async" className="h-4 w-auto opacity-90 dark:hidden" />
+                        <img src="/wayclo-black.png" alt="Wayclo" width={120} height={32} loading="lazy" decoding="async" className="hidden h-4 w-auto opacity-90 dark:block" />
                     </a>
-                    <span>{t('contact_copyright', { year: new Date().getFullYear().toString() })}</span>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                        <span suppressHydrationWarning>
+                            © {new Date().getFullYear()} {t.contact.rights}
+                        </span>
+                        <a href="#" className="inline-flex items-center gap-1.5 py-2 transition-colors hover:text-background">
+                            {t.contact.top}
+                            <ArrowUp className="h-4 w-4" />
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-        </section>
+            </footer>
+        </>
     )
 }

@@ -1,183 +1,335 @@
-export const translations = {
-    es: {
-        // Navbar
-        nav_experience: "Experiencia",
-        nav_projects: "Proyectos",
-        nav_about: "Perfil",
-        nav_contact: "Contacto",
+export type Language = "es" | "en"
 
-        // Hero
-        hero_available: "Disponible para nuevos proyectos",
-        hero_degree: "Ingeniero en Sistemas",
-        hero_role: "Consultor IT & Full-Stack Dev",
-        hero_desc: "Convierto las necesidades de tu negocio en soluciones digitales escalables. Acompaño cada proyecto con una comunicación cercana y transparente, garantizando tranquilidad técnica y estratégica en cada etapa del desarrollo.",
-        hero_btn_exp: "Ver Experiencia",
-        hero_btn_contact: "Contáctame",
-
-        // Tech Stack
-        tech_title: "Tech Stack",
-
-        // Experience
-        exp_title: "Experiencia",
-        exp_wayclo_date: "2025 - Presente",
-        exp_wayclo_role: "Desarrollador & Consultor IT",
-        exp_wayclo_desc: "En Wayclo, actúo como puente entre las necesidades estratégicas del negocio y la implementación técnica, desarrollando software robusto desde la arquitectura inicial hasta su despliegue en la nube.",
-        exp_key_responsibilities: "Responsabilidades Clave",
-        exp_resp_1: "Desarrollo Full-Stack y Arquitectura Cloud (GCP).",
-        exp_resp_2: "Integración de Modelos de Inteligencia Artificial (LLMs).",
-        exp_resp_3: "Automatización y Optimización de flujos de trabajo.",
-        exp_resp_4: "Interacción directa y consultoría técnica a clientes.",
-        exp_codegym_date: "2023 - Presente",
-        exp_codegym_role: "Co-fundador",
-        exp_codegym_desc: "Co-fundé CodeGym, una plataforma para la gestión integral de gimnasios y centros de fitness. Lidero el producto de punta a punta —arquitectura y desarrollo full-stack— y además me encargo de la venta y postventa, acompañando a cada gimnasio desde la demo hasta el soporte continuo.",
-        exp_codegym_resp_1: "Diseño y desarrollo full-stack del producto con Next.js.",
-        exp_codegym_resp_2: "Gestión de socios, cobros, vencimientos y control de accesos.",
-        exp_codegym_resp_3: "Venta y postventa: demos, onboarding y soporte a gimnasios.",
-        exp_codegym_resp_4: "Definición de producto y relación directa con gimnasios clientes.",
-
-        // Education
-        edu_title: "Educación",
-        edu_degree: "Ingeniería en Sistemas de Información",
-        edu_date: "2020 - 2026",
-        edu_university: "Universidad Tecnológica Nacional (UTN) - FRVM",
-        edu_desc: "Durante mi carrera adquirí los fundamentos analíticos que hoy me permiten diseñar e implementar soluciones web full-stack de alto nivel. La universidad me brindó la estructura necesaria para aplicar prácticas reales de ingeniería de software, priorizando siempre la calidad del código, la escalabilidad de la arquitectura y la eficiencia de cada sistema que desarrollo.",
-        edu_tag_1: "Arquitectura Web",
-        edu_tag_2: "Ingeniería de Software",
-        edu_tag_3: "Escalabilidad",
-        edu_final_proj_title: "Proyecto Final",
-        edu_final_proj_desc: "Proyecto Final de Grado aprobado, obteniendo el título de Ingeniero en Sistemas de Información (Julio 2026). Enfocado en mi consolidación profesional, aportando mi experiencia ingenieril al desarrollo de soluciones de alto valor.",
-        edu_final_proj_status: "Graduado",
-        edu_gpa_title: "Promedio General",
-
-        // Projects
-        proj_title: "Proyectos",
-        proj_desc: "Una selección de productos digitales construidos con foco en rendimiento, escalabilidad y experiencia de usuario.",
-        proj_btn_view: "Ver Proyecto",
-        proj_btn_locked: "Acceso Restringido",
-
-        proj_1_title: "GPSProp",
-        proj_1_desc: "Plataforma integral inmobiliaria para Río Cuarto. Permite a las inmobiliarias publicar propiedades, a profesionales promocionar sus servicios y a usuarios contactarlos de forma directa. Un ecosistema completo para el rubro.",
-
-        proj_2_title: "Chief Dashboard",
-        proj_2_desc: "Plataforma de Inteligencia Artificial que revoluciona la toma de decisiones. Permite a los directivos interactuar con sus bases de datos PostgreSQL mediante lenguaje natural. Utiliza una arquitectura avanzada basada en agentes (MCP) para generar métricas, gráficos y análisis en tiempo real.",
-
-        proj_3_title: "GearCode",
-        proj_3_desc: "SaaS integral para la gestión de talleres mecánicos. Control total de vehículos, clientes, stock, órdenes de trabajo y facturación.",
-
-        proj_4_title: "CodeGym",
-        proj_4_desc: "Software de gestión para centros de fitness. Administración de socios, membresías, control de accesos y reportes financieros.",
-
-        proj_5_title: "Pedidos Frideza",
-        proj_5_desc: "Gestion de pedidos, productos, clientes, reportes y rutas logísticas.",
-
-        // About
-        about_quote: '"Traduzco las <span className="text-emerald-400">necesidades del cliente</span> en arquitecturas escalables, manteniendo siempre una relación de absoluta confianza."',
-        about_desc_1: "Mi principal fortaleza radica en la habilidad de relacionarme con mis clientes. No solo desarrollo código; escucho, analizo y convierto objetivos de negocio en requisitos técnicos precisos.",
-        about_desc_2: "Creo que el éxito de un producto digital depende de mantener una comunicación constante, transparente y empática durante todo el ciclo de vida del proyecto. Mi objetivo es brindar una atención diferencial que aporte tranquilidad y seguridad, complementada con un alto rigor técnico en la implementación.",
-        about_location_title: "Ubicación Actual",
-        about_location_city: "📍 Río Cuarto, Córdoba",
-
-        // Contact
-        contact_available: "Disponible para nuevos desafíos",
-        contact_title: "HABLEMOS.",
-        contact_desc: "Ya sea un desarrollo a medida o una transformación digital completa, tengo la experiencia técnica para hacerlo realidad.",
-        contact_btn_wpp: "WhatsApp Directo",
-        contact_btn_email: "Email",
-        contact_btn_linkedin: "LinkedIn",
-        contact_powered: "Potenciado por",
-        contact_powered_desc: "Ejecución de software escalable respaldado por la potencia y seguridad de un equipo multidisciplinario.",
-        contact_copyright: "© {year} Martín Carnino.",
+const es = {
+    skip: "Saltar al contenido",
+    meta: {
+        title: "Martín Carnino | Ingeniero en Sistemas y especialista en IA",
+        description:
+            "Vos traés la necesidad, yo diseño el sistema. Ingeniero en Sistemas especializado en agentes de IA en producción, arquitectura de software y cloud. Creador de Botito, CodeGym, GPSProp y Pedidos Frideza.",
+        ogHeadline: "Vos traés la necesidad. Yo diseño el sistema.",
+        role: "Ingeniero en Sistemas y especialista en IA",
     },
-    en: {
-        // Navbar
-        nav_experience: "Experience",
-        nav_projects: "Projects",
-        nav_about: "Profile",
-        nav_contact: "Contact",
-
-        // Hero
-        hero_available: "Available for new projects",
-        hero_degree: "Systems Engineer",
-        hero_role: "IT Consultant & Full-Stack Dev",
-        hero_desc: "I convert your business needs into scalable digital solutions. I accompany each project with close and transparent communication, guaranteeing technical and strategic peace of mind at every stage of development.",
-        hero_btn_exp: "View Experience",
-        hero_btn_contact: "Contact Me",
-
-        // Tech Stack
-        tech_title: "Tech Stack",
-
-        // Experience
-        exp_title: "Experience",
-        exp_wayclo_date: "2025 - Present",
-        exp_wayclo_role: "IT Consultant & Developer",
-        exp_wayclo_desc: "At Wayclo, I act as a bridge between strategic business needs and technical implementation, developing robust software from initial architecture to cloud deployment.",
-        exp_key_responsibilities: "Key Responsibilities",
-        exp_resp_1: "Full-Stack Development and Cloud Architecture (GCP).",
-        exp_resp_2: "Artificial Intelligence Models Integration (LLMs).",
-        exp_resp_3: "Workflow Automation and Optimization.",
-        exp_resp_4: "Direct interaction and technical consulting to clients.",
-        exp_codegym_date: "2023 - Present",
-        exp_codegym_role: "Co-founder",
-        exp_codegym_desc: "I co-founded CodeGym, a platform for the complete management of gyms and fitness centers. I lead the product end-to-end —architecture and full-stack development— and I also handle sales and after-sales, guiding each gym from the demo through ongoing support.",
-        exp_codegym_resp_1: "Full-stack product design and development with Next.js.",
-        exp_codegym_resp_2: "Member management, billing, renewals, and access control.",
-        exp_codegym_resp_3: "Sales and after-sales: demos, onboarding, and gym support.",
-        exp_codegym_resp_4: "Product definition and direct relationship with gym clients.",
-
-        // Education
-        edu_title: "Education",
-        edu_degree: "Information Systems Engineering",
-        edu_date: "2020 - 2026",
-        edu_university: "National Technological University (UTN) - FRVM",
-        edu_desc: "During my degree, I acquired the analytical foundations that allow me to design and implement high-level full-stack web solutions today. The university provided me with the necessary structure to apply real software engineering practices, always prioritizing code quality, architectural scalability, and the efficiency of every system I develop.",
-        edu_tag_1: "Web Architecture",
-        edu_tag_2: "Software Engineering",
-        edu_tag_3: "Scalability",
-        edu_final_proj_title: "Final Project",
-        edu_final_proj_desc: "Final Degree Project approved, earning the title of Information Systems Engineer (July 2026). Focused on my professional consolidation, contributing my engineering experience to the development of high-value solutions.",
-        edu_final_proj_status: "Graduated",
-        edu_gpa_title: "Overall GPA",
-
-        // Projects
-        proj_title: "Projects",
-        proj_desc: "A selection of digital products built with a focus on performance, scalability, and user experience.",
-        proj_btn_view: "View Project",
-        proj_btn_locked: "Restricted Access",
-
-        proj_1_title: "GPSProp",
-        proj_1_desc: "Comprehensive real estate platform for Río Cuarto. It allows real estate agencies to publish properties, professionals to promote their services, and users to contact them directly. A complete ecosystem for the industry.",
-
-        proj_2_title: "Chief Dashboard",
-        proj_2_desc: "Artificial Intelligence platform that revolutionizes decision making. It allows executives to interact with their PostgreSQL databases using natural language. It uses an advanced agent-based architecture (MCP) to generate metrics, charts, and analysis in real time.",
-
-        proj_3_title: "GearCode",
-        proj_3_desc: "Comprehensive SaaS for the management of mechanical workshops. Total control of vehicles, clients, stock, work orders, and billing.",
-
-        proj_4_title: "CodeGym",
-        proj_4_desc: "Management software for fitness centers. Member administration, memberships, access control, and financial reports.",
-
-        proj_5_title: "Pedidos Frideza",
-        proj_5_desc: "Order management, products, clients, reports, and logistics routes.",
-
-        // About
-        about_quote: '"I translate <span className="text-emerald-400">client needs</span> into scalable architectures, always maintaining a relationship of absolute trust."',
-        about_desc_1: "My main strength lies in my ability to build relationships with my clients. I don't just develop code; I listen, analyze, and convert business objectives into precise technical requirements.",
-        about_desc_2: "I believe the success of a digital product depends on maintaining constant, transparent, and empathetic communication throughout the project's lifecycle. My goal is to provide differential attention that brings peace of mind and security, complemented by high technical rigor in implementation.",
-        about_location_title: "Current Location",
-        about_location_city: "📍 Rio Cuarto, Córdoba",
-
-        // Contact
-        contact_available: "Available for new challenges",
-        contact_title: "LET'S TALK.",
-        contact_desc: "Whether it's custom development or a complete digital transformation, I have the technical expertise to make it happen.",
-        contact_btn_wpp: "Direct WhatsApp",
-        contact_btn_email: "Email",
-        contact_btn_linkedin: "LinkedIn",
-        contact_powered: "Powered by",
-        contact_powered_desc: "Scalable software execution backed by the power and security of a multidisciplinary team.",
-        contact_copyright: "© {year} Martín Carnino.",
-    }
+    notFound: {
+        title: "Esta página no existe.",
+        body: "Puede que el enlace esté mal escrito o que la página se haya movido.",
+        cta: "Volver al inicio",
+    },
+    nav: {
+        work: "Proyectos",
+        ai: "Agentes de IA",
+        process: "Cómo trabajo",
+        journey: "Trayectoria",
+        contact: "Contacto",
+        whatsapp: "WhatsApp",
+        openMenu: "Abrir menú",
+        closeMenu: "Cerrar menú",
+        toLight: "Usar tema claro",
+        toDark: "Usar tema oscuro",
+        language: "Idioma",
+        home: "Martín Carnino, ir al inicio",
+    },
+    hero: {
+        role: "Ingeniero en Sistemas y especialista en IA",
+        available: "Disponible para proyectos nuevos",
+        title: "Vos traés la necesidad. Yo diseño el sistema.",
+        body: "Cada negocio tiene su propio problema. Analizo cada uno desde cero y llevo la solución hasta producción.",
+        ctaWork: "Ver proyectos",
+        marquee: ["Agentes de IA", "Arquitectura de software", "Infraestructura cloud", "Productos SaaS", "Integración de sistemas"],
+    },
+    need: {
+        label: "¿Qué necesitás resolver?",
+        send: "Enviar por WhatsApp",
+        hint: "Se abre WhatsApp con tu mensaje listo para enviar.",
+        empty: "Escribí tu necesidad con tus palabras, sin tecnicismos.",
+        message: "¡Hola Martín! Necesito resolver esto:",
+    },
+    work: {
+        title: "Proyectos",
+        intro: "Cada uno empezó por una necesidad concreta. Abrí cualquiera para ver cómo la analicé y qué construí.",
+        needLabel: "La necesidad",
+        of: "de",
+        viewCase: "Ver detalle",
+        visit: "Visitar sitio",
+        tryBot: "Probá el bot en vivo",
+        tryBotNote: "Es el agente real, por WhatsApp. Mandale un texto o un audio.",
+        privateLink: "Sistema privado",
+        status: {
+            live: "En producción",
+            private: "Uso interno",
+            thesis: "Proyecto final UTN",
+        },
+    },
+    caseStudy: {
+        problem: "El problema",
+        built: "Qué construí",
+        role: "Mi rol",
+        stack: "Tecnologías",
+        links: "Enlaces",
+        close: "Cerrar",
+        privateNote: "Es un sistema interno de la empresa, por eso no tiene enlace público.",
+        showImage: "Mostrar imagen",
+        instagram: "Instagram",
+        prev: "Proyecto anterior",
+        next: "Proyecto siguiente",
+    },
+    harness: {
+        title: "Anatomía de un agente de IA en producción",
+        intro: "Que una IA funcione en una demo es fácil. Que un negocio le pueda confiar sus clientes requiere un harness: la orquestación y los controles alrededor del modelo. Este es el que construí para Botito, paso a paso.",
+        traceTitle: "botito · traza del agente",
+        traceNote: "Traza ilustrativa del pipeline real de Botito. El contenido del mensaje es un ejemplo.",
+        prev: "Paso anterior",
+        next: "Paso siguiente",
+        step: "Paso",
+        of: "de",
+        steps: [
+            { title: "Verificar", body: "Cada webhook se valida contra la firma de Meta sobre el cuerpo crudo del pedido. Sin firma válida, no se toca la base de datos." },
+            { title: "Aislar", body: "Cada número de WhatsApp resuelve a una sola inmobiliaria, con credenciales cifradas. Por construcción, es imposible responder desde el número de otra." },
+            { title: "Deduplicar", body: "Meta puede entregar el mismo evento dos veces. El ID del mensaje es el ID del documento, así un reintento nunca se convierte en una segunda respuesta." },
+            { title: "Entender", body: "Los audios se descargan y se transcriben con Whisper. El agente lee la transcripción igual que un texto." },
+            { title: "Esperar", body: "La gente escribe en ráfagas. Un debounce de 4,5 s convierte \"hola\" + \"quería consultar\" + \"por el depto\" en un solo turno: una llamada al modelo, una respuesta." },
+            { title: "Dar contexto", body: "El prompt se arma de cero en cada turno: tono de la inmobiliaria, ficha del interesado, inventario activo, visitas agendadas y un calendario ya resuelto. Los modelos calculan mal las fechas, así que las buscan en vez de calcularlas." },
+            { title: "Actuar", body: "Seis herramientas y hasta cinco pasos: buscar propiedades con un scoring determinístico y explicable, calificar al interesado y agendar, mover o cancelar visitas. Cada ID que pasa el modelo se valida, porque puede inventarlo." },
+            { title: "Ceder el control", body: "Las visitas siempre nacen pendientes y las confirma una persona. Si un asesor toma la conversación desde la bandeja, el bot deja de hablar." },
+        ],
+    },
+    process: {
+        title: "Cómo encaro cada necesidad",
+        intro: "Sin plantillas. Cada proyecto empieza por entender cómo funciona tu negocio de verdad.",
+        steps: [
+            {
+                title: "Analizar la necesidad",
+                body: "Charlamos sobre cómo trabajás hoy y qué te frena. Antes de empezar, el alcance queda por escrito.",
+            },
+            {
+                title: "Diseñar el flujo",
+                body: "Armo las pantallas clave y las valido con quienes las van a usar, antes de escribir código.",
+            },
+            {
+                title: "Construir por etapas",
+                body: "Entregas cortas que podés probar a medida que avanzamos, sin esperar hasta el final.",
+            },
+            {
+                title: "Acompañar en el uso",
+                body: "Implementación, capacitación, soporte y mejoras una vez que el sistema está funcionando.",
+            },
+        ],
+    },
+    journey: {
+        title: "Trayectoria",
+        location: "Río Cuarto, Córdoba",
+        photoAlt: "Retrato de Martín Carnino",
+        bio: [
+            "Combino ingeniería práctica con consultoría IT y desarrollo de producto para convertir necesidades de negocio complejas en sistemas escalables y listos para producción.",
+            "Me interesan especialmente los agentes de IA, los harnesses de IA, la arquitectura cloud y las prácticas de ingeniería que hacen falta para llevar sistemas inteligentes a producción de forma confiable y segura.",
+            "Trabajo cerca del cliente durante todo el proyecto, y sigo cerca cuando el sistema ya está en uso.",
+        ],
+        items: [
+            {
+                org: "Wayclo",
+                period: "dic. 2025 – hoy",
+                role: "Ingeniero en Sistemas y especialista en IA",
+                body: "Diseño y evoluciono soluciones para clientes y proyectos internos, del análisis del problema a la operación en producción. Construyo harnesses de IA: la orquestación y los controles que permiten que los modelos de lenguaje funcionen como agentes confiables, usen herramientas e interactúen con otros sistemas de forma segura. También trabajo en arquitectura cloud e integración de sistemas, principalmente sobre Google Cloud.",
+            },
+            {
+                org: "CodeGym",
+                period: "jun. 2023 – hoy",
+                role: "Co-fundador",
+                body: "Lidero la estrategia tecnológica y el producto de punta a punta: validar necesidades, definir la dirección, diseñar la arquitectura, construir, lanzar y mejorar. Acompaño a cada gimnasio en el onboarding y el soporte, y uso ese feedback para decidir qué sigue.",
+            },
+            {
+                org: "UTN Facultad Regional Villa María",
+                period: "2020 – 2026",
+                role: "Ingeniería en Sistemas de Información",
+                body: "Recibido en julio de 2026 con promedio 8,40. Mi proyecto final fue Chief Dashboard.",
+            },
+        ],
+        toolsTitle: "Herramientas",
+        tools: [
+            { group: "Producto web", items: ["Next.js", "React", "TypeScript", "Tailwind CSS"] },
+            { group: "Backend y datos", items: ["Node.js", "NestJS", "Express", "PostgreSQL", "Firebase"] },
+            { group: "Ingeniería de IA", items: ["Agentes de IA", "Harnesses", "LLMs", "MCP", "Vercel AI SDK"] },
+            { group: "Cloud e infraestructura", items: ["Google Cloud (GCP)", "Vercel", "Docker", "VMware vSphere"] },
+        ],
+    },
+    contact: {
+        title: "Contame qué necesitás.",
+        body: "Escribilo con tus palabras. Me llega por WhatsApp y lo analizamos juntos. Si preferís, también por email.",
+        whatsapp: "Escribime por WhatsApp",
+        copy: "Copiar email",
+        copied: "Email copiado",
+        copyFailed: "No se pudo copiar. El email es",
+        elsewhere: "También en",
+        partOf: "Parte del equipo de",
+        rights: "Martín Carnino",
+        top: "Volver arriba",
+    },
 }
 
-export type Language = 'es' | 'en';
-export type TranslationKey = keyof typeof translations.es;
+export type Dictionary = typeof es
+
+const en: Dictionary = {
+    skip: "Skip to content",
+    meta: {
+        title: "Martín Carnino | Systems Engineer & AI Specialist",
+        description:
+            "You bring the need, I engineer the system. Systems engineer specializing in AI agents in production, software architecture and cloud. Builder of Botito, CodeGym, GPSProp and Pedidos Frideza.",
+        ogHeadline: "You bring the need. I engineer the system.",
+        role: "Systems Engineer & AI Specialist",
+    },
+    notFound: {
+        title: "This page doesn't exist.",
+        body: "The link may be mistyped, or the page may have moved.",
+        cta: "Back to home",
+    },
+    nav: {
+        work: "Work",
+        ai: "AI agents",
+        process: "Process",
+        journey: "Background",
+        contact: "Contact",
+        whatsapp: "WhatsApp",
+        openMenu: "Open menu",
+        closeMenu: "Close menu",
+        toLight: "Switch to light theme",
+        toDark: "Switch to dark theme",
+        language: "Language",
+        home: "Martín Carnino, go to top",
+    },
+    hero: {
+        role: "Systems Engineer & AI Specialist",
+        available: "Available for new projects",
+        title: "You bring the need. I engineer the system.",
+        body: "Every business has its own problem. I analyze each one from scratch and take the solution all the way to production.",
+        ctaWork: "See projects",
+        marquee: ["AI agents", "Software architecture", "Cloud infrastructure", "SaaS products", "Systems integration"],
+    },
+    need: {
+        label: "What do you need to solve?",
+        send: "Send on WhatsApp",
+        hint: "Opens WhatsApp with your message ready to send.",
+        empty: "Describe your need in your own words, no jargon needed.",
+        message: "Hi Martín! I need to solve this:",
+    },
+    work: {
+        title: "Work",
+        intro: "Each one started from a concrete need. Open any of them to see how I analyzed it and what I built.",
+        needLabel: "The need",
+        of: "of",
+        viewCase: "View details",
+        visit: "Visit site",
+        tryBot: "Try the live bot",
+        tryBotNote: "It's the real agent, on WhatsApp. It's built for Argentine agencies, so it answers in Spanish.",
+        privateLink: "Private system",
+        status: {
+            live: "In production",
+            private: "Internal use",
+            thesis: "UTN final project",
+        },
+    },
+    caseStudy: {
+        problem: "The problem",
+        built: "What I built",
+        role: "My role",
+        stack: "Technologies",
+        links: "Links",
+        close: "Close",
+        privateNote: "This is an internal company system, so it has no public link.",
+        showImage: "Show image",
+        instagram: "Instagram",
+        prev: "Previous project",
+        next: "Next project",
+    },
+    harness: {
+        title: "Anatomy of a production AI agent",
+        intro: "Getting AI to work in a demo is easy. Getting a business to trust it with its customers takes a harness: the orchestration and controls around the model. Here's the one I built for Botito, step by step.",
+        traceTitle: "botito · agent trace",
+        traceNote: "Illustrative trace of Botito's real pipeline. The message content is a sample.",
+        prev: "Previous step",
+        next: "Next step",
+        step: "Step",
+        of: "of",
+        steps: [
+            { title: "Verify", body: "Every webhook is checked against Meta's signature over the raw request body. No valid signature, nothing touches the database." },
+            { title: "Isolate", body: "Each WhatsApp number resolves to exactly one agency, with encrypted credentials. By construction, no agency can ever reply from another's number." },
+            { title: "Deduplicate", body: "Meta can deliver the same event twice. The message ID is the document ID, so a retry never turns into a second reply." },
+            { title: "Understand", body: "Voice notes are downloaded and transcribed with Whisper. The agent reads the transcript just like text." },
+            { title: "Wait", body: "People type in bursts. A 4.5 s debounce turns \"hi\" + \"I wanted to ask\" + \"about the flat\" into a single turn: one model call, one answer." },
+            { title: "Ground", body: "The prompt is rebuilt every turn from the agency's tone, the lead's profile, live inventory, booked visits and a pre-resolved calendar. Models get dates wrong, so the agent looks them up instead of calculating." },
+            { title: "Act", body: "Six tools, up to five steps: search listings with deterministic, explainable scoring, qualify the lead, and book, move or cancel viewings. Every ID the model passes is validated, because it can make one up." },
+            { title: "Hand off", body: "Viewings are always created as pending and a person confirms them. If an agent takes over the chat from the inbox, the bot stops talking." },
+        ],
+    },
+    process: {
+        title: "How I approach each need",
+        intro: "No templates. Every project starts by understanding how your business actually works.",
+        steps: [
+            {
+                title: "Analyze the need",
+                body: "We talk about how you work today and what's holding you back. The scope is written down before we start.",
+            },
+            {
+                title: "Design the flow",
+                body: "I sketch the key screens and validate them with the people who'll use them, before writing code.",
+            },
+            {
+                title: "Build in stages",
+                body: "Short deliveries you can try as we go, instead of waiting until the end.",
+            },
+            {
+                title: "Support it in use",
+                body: "Rollout, training, support and improvements once the system is up and running.",
+            },
+        ],
+    },
+    journey: {
+        title: "Background",
+        location: "Río Cuarto, Córdoba, Argentina",
+        photoAlt: "Portrait of Martín Carnino",
+        bio: [
+            "I combine hands-on engineering with IT consulting and product development, turning complex business needs into scalable, production-ready systems.",
+            "I'm particularly interested in AI agents, AI harnesses, cloud architecture, and the engineering practices required to bring intelligent systems into production reliably and securely.",
+            "I work closely with clients throughout the project, and stay close once the system is in use.",
+        ],
+        items: [
+            {
+                org: "Wayclo",
+                period: "Dec 2025 – now",
+                role: "Systems Engineer & AI Specialist",
+                body: "I design and evolve solutions for clients and internal projects, from problem analysis to production operations. I build AI harnesses: the orchestration and control mechanisms that let language models operate as reliable agents, use tools and interact with external systems securely. I also work on cloud architecture and systems integration, mainly on Google Cloud.",
+            },
+            {
+                org: "CodeGym",
+                period: "Jun 2023 – now",
+                role: "Co-founder",
+                body: "I lead technology strategy and product end to end: validating needs, setting direction, designing the architecture, building, launching and improving. I support each gym through onboarding and support, and use that feedback to decide what comes next.",
+            },
+            {
+                org: "UTN Villa María Regional School",
+                period: "2020 – 2026",
+                role: "Information Systems Engineering",
+                body: "Graduated in July 2026 with an 8.40/10 GPA. My final project was Chief Dashboard.",
+            },
+        ],
+        toolsTitle: "Tools",
+        tools: [
+            { group: "Web product", items: ["Next.js", "React", "TypeScript", "Tailwind CSS"] },
+            { group: "Backend and data", items: ["Node.js", "NestJS", "Express", "PostgreSQL", "Firebase"] },
+            { group: "AI engineering", items: ["AI agents", "Harnesses", "LLMs", "MCP", "Vercel AI SDK"] },
+            { group: "Cloud and infrastructure", items: ["Google Cloud (GCP)", "Vercel", "Docker", "VMware vSphere"] },
+        ],
+    },
+    contact: {
+        title: "Tell me what you need.",
+        body: "Write it in your own words. It reaches me on WhatsApp and we'll analyze it together. Email works too.",
+        whatsapp: "Message me on WhatsApp",
+        copy: "Copy email",
+        copied: "Email copied",
+        copyFailed: "Couldn't copy. The email is",
+        elsewhere: "Also on",
+        partOf: "Part of the team at",
+        rights: "Martín Carnino",
+        top: "Back to top",
+    },
+}
+
+export const translations: Record<Language, Dictionary> = { es, en }

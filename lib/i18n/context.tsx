@@ -1,73 +1,41 @@
 "use client"
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { translations, Language, TranslationKey } from './translations';
+import { createContext, useCallback, useContext } from "react"
+import { useRouter } from "next/navigation"
+import { translations, type Dictionary, type Language } from "./translations"
+import { pathFor } from "./config"
 
 interface LanguageContextType {
-    language: Language;
-    setLanguage: (lang: Language) => void;
-    t: (key: TranslationKey, params?: Record<string, string>) => string;
+    language: Language
+    setLanguage: (lang: Language) => void
+    t: Dictionary
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguage] = useState<Language>('es');
-    const [mounted, setMounted] = useState(false);
+/**
+ * The language comes from the URL ("/" English, "/es" Spanish) and is rendered on the server,
+ * so every visitor and every crawler gets the right language in the first HTML.
+ */
+export function LanguageProvider({ language, children }: { language: Language; children: React.ReactNode }) {
+    const router = useRouter()
 
-    useEffect(() => {
-        // Hydration mismatch avoidance
-        setMounted(true);
-        const stored = localStorage.getItem('portfolio_lang') as Language;
-        if (stored === 'es' || stored === 'en') {
-            setLanguage(stored);
-        } else {
-            // Auto detect from browser
-            const browserLang = navigator.language.split('-')[0];
-            if (browserLang === 'en') {
-                setLanguage('en');
-                localStorage.setItem('portfolio_lang', 'en');
-            }
-        }
-    }, []);
+    const setLanguage = useCallback(
+        (lang: Language) => {
+            if (lang === language) return
+            // Same section, other language: keep the scroll position and any #hash.
+            router.push(pathFor(lang) + window.location.hash, { scroll: false })
+        },
+        [language, router],
+    )
 
-    const handleSetLanguage = (lang: Language) => {
-        setLanguage(lang);
-        localStorage.setItem('portfolio_lang', lang);
-    };
-
-    const t = (key: TranslationKey, params?: Record<string, string>): string => {
-        let text = translations[language][key] || translations['es'][key] || key;
-        
-        if (params) {
-            Object.entries(params).forEach(([paramKey, value]) => {
-                text = text.replace(`{${paramKey}}`, value);
-            });
-        }
-        
-        return text;
-    };
-
-    // Prevent hydration mismatch by rendering default on server, then updating
-    if (!mounted) {
-        return (
-            <LanguageContext.Provider value={{ language: 'es', setLanguage: handleSetLanguage, t }}>
-                <div style={{ visibility: 'hidden' }}>{children}</div>
-            </LanguageContext.Provider>
-        );
-    }
-
-    return (
-        <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
-            {children}
-        </LanguageContext.Provider>
-    );
+    return <LanguageContext.Provider value={{ language, setLanguage, t: translations[language] }}>{children}</LanguageContext.Provider>
 }
 
 export function useLanguage() {
-    const context = useContext(LanguageContext);
-    if (context === undefined) {
-        throw new Error('useLanguage must be used within a LanguageProvider');
+    const context = useContext(LanguageContext)
+    if (!context) {
+        throw new Error("useLanguage must be used within a LanguageProvider")
     }
-    return context;
+    return context
 }
